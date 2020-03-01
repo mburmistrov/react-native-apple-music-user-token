@@ -1,8 +1,7 @@
 {
   "name": "react-native-apple-music-user-token",
-  "title": "React Native Apple Music User Token",
-  "version": "1.0.0",
-  "description": "TODO",
+  "version": "0.1.0",
+  "description": "Request apple music user token from React Native app",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -13,11 +12,12 @@
     "baseUrl": "https://github.com/github_account/react-native-apple-music-user-token"
   },
   "keywords": [
-    "react-native"
+    "react-native",
+    "apple music"
   ],
   "author": {
-    "name": "Your Name",
-    "email": "yourname@email.com"
+    "name": "Mikhail Burmistrov",
+    "email": "misha.burmistrov@gmail.com"
   },
   "license": "MIT",
   "licenseFilename": "LICENSE",
