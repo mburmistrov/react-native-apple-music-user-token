@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.homepage     = "https://github.com/github_account/react-native-apple-music-user-token"
   s.license      = "MIT"
   # s.license    = { :type => "MIT", :file => "FILE_LICENSE" }
-  s.authors      = { "Your Name" => "yourname@email.com" }
+  s.authors      = { "Mikhail Burmistrov" => "misha.burmistrov@gmail.com" }
   s.platforms    = { :ios => "11.0" }
   s.source       = { :git => "https://github.com/github_account/react-native-apple-music-user-token.git", :tag => "#{s.version}" }
 
@@ -23,4 +23,3 @@ Pod::Spec.new do |s|
   # ...
   # s.dependency "..."
 end
-
