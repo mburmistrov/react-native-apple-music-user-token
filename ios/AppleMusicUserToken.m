@@ -31,6 +31,11 @@ RCT_EXPORT_METHOD(requestUserTokenForDeveloperToken:(NSString *)developerToken r
         if (error == nil && userToken != nil) {
             resolve(userToken);
         } else {
+            if (error.code == 7) {
+                // Developer token is invalid or a user is not an Apple Music subscriber
+                reject(@"cannot_connect_to_cloud_service", @"Cannot connect to cloud service", error);
+                return;
+            }
             reject(@"user_token_request_failed", @"User token request failed", error);
         }
     }];
