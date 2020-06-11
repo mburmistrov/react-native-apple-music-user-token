@@ -29,14 +29,15 @@ RCT_EXPORT_METHOD(requestUserTokenForDeveloperToken:(NSString *)developerToken r
     SKCloudServiceController *cloudController = [[SKCloudServiceController alloc] init];
     [cloudController requestUserTokenForDeveloperToken:developerToken completionHandler:^(NSString *userToken, NSError *error) {
         if (error == nil && userToken != nil) {
-            resolve(userToken);
+            resolve(@{ @"type" : @"success", @"token" : userToken });
         } else {
-            if (error.code == 7) {
-                // Developer token is invalid or a user is not an Apple Music subscriber
-                reject(@"cannot_connect_to_cloud_service", @"Cannot connect to cloud service", error);
+            if (error.code == 1 || error.code == 7) {
+                // error.code == 1: Probably the user is not logged to with Apple account
+                // error.code == 7: Developer token is invalid or the user is not an Apple Music subscriber
+                resolve(@{ @"type" : @"failure" });
                 return;
             }
-            reject(@"user_token_request_failed", @"User token request failed", error);
+            reject(@"unexpected_error", @"An unexpected error has occurred", error);
         }
     }];
 }
