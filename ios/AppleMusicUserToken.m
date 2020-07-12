@@ -10,19 +10,19 @@ RCT_EXPORT_METHOD(requestAuthorization:(RCTPromiseResolveBlock)resolve rejecter:
     [SKCloudServiceController requestAuthorization:^(SKCloudServiceAuthorizationStatus status) {
         switch (status) {
             case SKCloudServiceAuthorizationStatusDenied:
-                resolve(@{ @"type" : @"failure", @"error" : @"authorization_denied", @"message" : "Authorization denied" });
+                resolve(@{ @"type" : @"failure", @"error" : @"authorization_denied", @"message" : @"Authorization denied" });
                 break;
             case SKCloudServiceAuthorizationStatusRestricted:
-                resolve(@{ @"type" : @"failure", @"error" : @"authorization_restricted", @"message" : "Authorization restricted" });
+                resolve(@{ @"type" : @"failure", @"error" : @"authorization_restricted", @"message" : @"Authorization restricted" });
                 break;
             case SKCloudServiceAuthorizationStatusNotDetermined:
-                resolve(@{ @"type" : @"failure", @"error" : @"authorization_not_determined", @"message" : "Authorization status cannot be determined" });
+                resolve(@{ @"type" : @"failure", @"error" : @"authorization_not_determined", @"message" : @"Authorization status cannot be determined" });
                 break;
             case SKCloudServiceAuthorizationStatusAuthorized:
                 resolve(@{ @"type" : @"success" });
                 break;
             default:
-                resolve(@{ @"type" : @"failure", @"error" : @"unexpected_result", @"message" : "Unexpected result" });
+                resolve(@{ @"type" : @"failure", @"error" : @"unexpected_result", @"message" : @"Unexpected result" });
                 break;
         }
     }];
