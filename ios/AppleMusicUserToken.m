@@ -38,9 +38,6 @@ RCT_EXPORT_METHOD(requestAuthorization:(RCTPromiseResolveBlock)resolve rejecter:
             case SKCloudServiceAuthorizationStatusRestricted:
                 resolve(@{ @"type" : @"failure", @"error" : @"authorization_restricted", @"message" : @"Authorization restricted" });
                 break;
-            case SKCloudServiceAuthorizationStatusNotDetermined:
-                resolve(@{ @"type" : @"failure", @"error" : @"authorization_not_determined", @"message" : @"Authorization status cannot be determined" });
-                break;
             case SKCloudServiceAuthorizationStatusAuthorized:
                 resolve(@{ @"type" : @"success" });
                 break;
