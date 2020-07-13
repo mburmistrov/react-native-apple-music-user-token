@@ -5,6 +5,29 @@
 
 RCT_EXPORT_MODULE()
 
+RCT_EXPORT_METHOD(getAuthorizationStatus:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
+{
+    SKCloudServiceAuthorizationStatus status = [SKCloudServiceController authorizationStatus];
+    
+    switch (status) {
+        case SKCloudServiceAuthorizationStatusDenied:
+            resolve(@{ @"type" : @"success", @"status" : @"authorization_denied" });
+            break;
+        case SKCloudServiceAuthorizationStatusRestricted:
+            resolve(@{ @"type" : @"success", @"status" : @"authorization_restricted" });
+            break;
+        case SKCloudServiceAuthorizationStatusNotDetermined:
+            resolve(@{ @"type"  : @"success", @"status" : @"authorization_not_determined" });
+            break;
+        case SKCloudServiceAuthorizationStatusAuthorized:
+            resolve(@{ @"type" : @"success", @"status" : @"authorization_authorized" });
+            break;
+        default:
+            resolve(@{ @"type" : @"failure", @"error" : @"unexpected_result", @"message" : @"Unexpected result" });
+            break;
+    }
+}
+
 RCT_EXPORT_METHOD(requestAuthorization:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
 {
     [SKCloudServiceController requestAuthorization:^(SKCloudServiceAuthorizationStatus status) {
