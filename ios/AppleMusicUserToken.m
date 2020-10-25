@@ -62,7 +62,9 @@ RCT_EXPORT_METHOD(requestUserTokenForDeveloperToken:(NSString *)developerToken r
                 resolve(@{ @"type" : @"failure" });
                 return;
             }
-            reject(@"unexpected_error", @"An unexpected error has occurred", error);
+            // For some reason error.code is not present in error obj recieved by js, so it is concatenated to msg
+            NSString *msg = [@"An unexpected error has occurred, native code: " stringByAppendingString:@(error.code).stringValue];
+            reject(@"unexpected_error", msg, error);
         }
     }];
 }
