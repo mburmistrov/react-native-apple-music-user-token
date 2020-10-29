@@ -55,7 +55,7 @@ RCT_EXPORT_METHOD(requestUserTokenForDeveloperToken:(NSString *)developerToken r
         if (error == nil && userToken != nil) {
             resolve(@{ @"type" : @"success", @"token" : userToken });
         } else {
-            if (error.code == 1 || error.code == 6 || error.code == 7 || error.code = 9) {
+            if (error.code == 1 || error.code == 6 || error.code == 7 || error.code == 9) {
                 // error.code == 1: Probably the user is not logged to with Apple account
                 // error.code == 6: The requesting app does not have the necessary permissions
                 // error.code == 7: Developer token is invalid or the user is not an Apple Music subscriber
